@@ -3,6 +3,7 @@ FROM php:5.6-apache
 RUN apt-get update \
     && apt-get install -y --fix-missing git libssl-dev zlib1g-dev libicu-dev g++ mcrypt php-pear php5-apcu\
     libfreetype6-dev \
+    libxslt-dev \
  #   php5-imagick \
     libjpeg62-turbo-dev \
  #   libmagickcore-dev \
@@ -42,7 +43,7 @@ ENV ENVIRONMENT docker
 RUN a2enmod ssl rewrite \
  && export TERM=xterm \
  && mkdir /root/.ssh/ \
- && php5enmod xsl
+ && docker-php-ext-install xsl
 
 RUN usermod -u 1000 www-data 
 
