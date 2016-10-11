@@ -22,12 +22,12 @@ RUN apt-get update \
     && docker-php-ext-install zip mbstring intl gd mcrypt pdo pdo_mysql mysqli
 
     # ImageMagick need to setup
-RUN apt-get install --fix-missing -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*  && \
-    curl -L https://pecl.php.net/get/imagick-3.3.0RC2.tgz >> /usr/src/php/ext/imagick.tgz && \
-    tar -xf /usr/src/php/ext/imagick.tgz -C /usr/src/php/ext/ && \
-    rm /usr/src/php/ext/imagick.tgz
+#RUN apt-get install --fix-missing -y libmagickwand-dev --no-install-recommends && rm -rf /var/lib/apt/lists/*  && \
+#    curl -L https://pecl.php.net/get/imagick-3.3.0RC2.tgz >> /usr/src/php/ext/imagick.tgz && \
+#    tar -xf /usr/src/php/ext/imagick.tgz -C /usr/src/php/ext/ && \
+#    rm /usr/src/php/ext/imagick.tgz
 
-RUN docker-php-ext-install imagick-3.3.0RC2 
+#RUN docker-php-ext-install imagick-3.3.0RC2 
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs
