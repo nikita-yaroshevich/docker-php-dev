@@ -1,0 +1,33 @@
+magento2:
+  build: .
+  environment:
+    APACHE_LOG_DIR: /var/log/apache2
+  volumes:
+    - "./www:/var/www/apps"
+    - "./logs:/var/log/apache2"
+  ports:
+    - "80:80"
+    # - "3306:3306"
+  links: 
+    - magento2db
+
+magento2db:
+  image: mysql:5.6
+  ports:
+     - "3306:3306"
+  environment:
+     - MYSQL_ROOT_PASSWORD=q1w2e3r4
+     - MYSQL_DATABASE=magento2
+
+# offersredis:
+#   image: redis
+#   ports:
+#     - "6379:6379"
+
+# #gearman:
+# #  image: pataquets/gearmand
+
+# offersmongo:
+#   image: mongo
+#   ports:
+#     - "27017:27017"
